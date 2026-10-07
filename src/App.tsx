@@ -1,5 +1,12 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
+import { registerPlugin } from '@capacitor/core';
 import { audioEngine } from './audioEngine';
+
+interface GlobalAudioBoosterPluginType {
+  setSystemBoost(options: { boost: number }): Promise<void>;
+}
+
+const GlobalAudioBooster = registerPlugin<GlobalAudioBoosterPluginType>('GlobalAudioBooster');
 
 export const App: React.FC = () => {
   // Volume: 0% to 300%
@@ -15,12 +22,17 @@ export const App: React.FC = () => {
   const startY = useRef<number>(0);
   const startVal = useRef<number>(100);
 
-  // Sync with Web Audio Engine (limiter is ALWAYS silently active)
+  // Sync with Web Audio Engine (limiter is ALWAYS silently active) and Native Hardware Plugin
   useEffect(() => {
     audioEngine.setBoostLevel(volume);
-    audioEngine.setLimiterProtection(true); // Hardware safety silently enforced
+    audioEngine.setLimiterProtection(true);
     audioEngine.setBass(volume > 150 ? 5 : 2);
     audioEngine.setTreble(volume > 200 ? 4 : 1);
+
+    // Call native Android hardware booster (if running on Android app)
+    GlobalAudioBooster.setSystemBoost({ boost: volume }).catch(() => {
+      // Running on browser preview, fallback to WebAudio
+    });
   }, [volume]);
 
   // "Under the hood" system limitation watcher
