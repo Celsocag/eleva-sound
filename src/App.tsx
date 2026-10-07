@@ -9,9 +9,7 @@ interface GlobalAudioBoosterPluginType {
 const GlobalAudioBooster = registerPlugin<GlobalAudioBoosterPluginType>('GlobalAudioBooster');
 
 export const App: React.FC = () => {
-  // Volume: 0% to 300%
   const [volume, setVolume] = useState<number>(100);
-  const [isPlaying, setIsPlaying] = useState<boolean>(false);
   
   // Invisible impediment detection & Guided Popup
   const [impedimentDetected, setImpedimentDetected] = useState<boolean>(false);
