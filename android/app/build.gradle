@@ -42,6 +42,17 @@ dependencies {
     implementation project(':capacitor-cordova-android-plugins')
 }
 
+configurations.all {
+    resolutionStrategy {
+        eachDependency { DependencyResolveDetails details ->
+            if (details.requested.group == 'org.jetbrains.kotlin' && 
+               (details.requested.name == 'kotlin-stdlib-jdk7' || details.requested.name == 'kotlin-stdlib-jdk8')) {
+                details.useTarget("org.jetbrains.kotlin:kotlin-stdlib:1.8.22")
+            }
+        }
+    }
+}
+
 apply from: 'capacitor.build.gradle'
 
 try {
