@@ -199,6 +199,17 @@ export const App: React.FC = () => {
             <line x1="93" y1="25" x2="101" y2="25" stroke="#ff2a2a" strokeWidth="2.4" strokeLinecap="round" />
           </svg>
         </div>
+
+        {/* Minimalist Sub-tagline */}
+        <span style={{
+          fontSize: '8px',
+          letterSpacing: '0.25em',
+          color: 'rgba(255, 255, 255, 0.35)',
+          textTransform: 'uppercase',
+          marginTop: '2px',
+        }}>
+          SEM CONTA • SEM ANÚNCIOS • DIRETO AO PONTO
+        </span>
       </header>
 
       {/* CENTER: The Pure Knob */}
