@@ -64,10 +64,6 @@ export const App: React.FC = () => {
     isDragging.current = true;
     startY.current = clientY;
     startVal.current = volume;
-
-    if (!isPlaying) {
-      audioEngine.startAcousticDemo(() => setIsPlaying(true));
-    }
   };
 
   const handleMove = useCallback((clientY: number) => {
@@ -375,7 +371,6 @@ export const App: React.FC = () => {
               const val = Number(e.target.value);
               setVolume(val);
               checkSystemImpediment(val);
-              if (!isPlaying) audioEngine.startAcousticDemo(() => setIsPlaying(true));
             }}
             className="obsidian-slider"
             style={{ zIndex: 2 }}
