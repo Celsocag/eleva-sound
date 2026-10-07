@@ -1,0 +1,87 @@
+:root {
+  --bg-pure: #000000;
+  --bg-surface: #070707;
+  --text-pure: #ffffff;
+  --text-dim: #444444;
+  --text-subtle: #777777;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+  -webkit-tap-highlight-color: transparent;
+  user-select: none;
+}
+
+body {
+  font-family: 'Space Grotesk', -apple-system, BlinkMacSystemFont, sans-serif;
+  background-color: var(--bg-pure);
+  color: var(--text-pure);
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+#root {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.font-numeric {
+  font-family: 'Space Grotesk', sans-serif;
+  font-feature-settings: 'tnum' on, 'lnum' on;
+}
+
+.brand-font {
+  font-family: 'Cinzel', serif;
+  letter-spacing: 0.4em;
+}
+
+/* Custom Minimalist Slider Styling */
+.obsidian-slider {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 2px;
+  background: rgba(255, 255, 255, 0.12);
+  outline: none;
+  cursor: pointer;
+  position: relative;
+}
+
+.obsidian-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: #ffffff;
+  cursor: pointer;
+  border: 2px solid #000000;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+  transition: transform 0.1s ease, box-shadow 0.2s ease;
+}
+
+.obsidian-slider::-webkit-slider-thumb:hover,
+.obsidian-slider::-webkit-slider-thumb:active {
+  transform: scale(1.3);
+  box-shadow: 0 0 16px rgba(255, 255, 255, 0.9);
+}
+
+.obsidian-slider::-moz-range-thumb {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: #ffffff;
+  cursor: pointer;
+  border: 2px solid #000000;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+  transition: transform 0.1s ease, box-shadow 0.2s ease;
+}
